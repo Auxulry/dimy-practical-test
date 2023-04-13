@@ -16,3 +16,11 @@ build:
 	go build -o ${BUILD_DIR}/app ${ENGINE}
 	@echo "Success build app. Your app is ready to use in 'build/' directory."
 .PHONY: build
+
+dependency:
+	@echo "Downloading all Go dependencies needed"
+	go mod download
+	go mod verify
+	go mod tidy
+	@echo "All Go dependencies was downloaded. you can run 'make debug' to compile locally or 'make build' to build app."
+.PHONY: dependency
